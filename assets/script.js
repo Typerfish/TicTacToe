@@ -23,7 +23,7 @@ let currentPlayer = "X";
 
 // Messages
 
-const winningMessage = ()=> `Play ${CurrentPlayer} is victor!`;
+const winningMessage = ()=> `Player ${CurrentPlayer} is victor!`;
 const tieMessage = ()=> `Uh Oh! The battle of wills continues!`;
 const currentTurn = ()=> `It's ${currentPlayer}'s move..`;
 
@@ -34,7 +34,6 @@ gameStatus.innerHTML = currentTurn();
 function handleCellPlayed(clickedCell, clickedCellIndex){
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
-    console.log('clicked')
 }
 
 function handlePlayerChange(){
@@ -44,7 +43,7 @@ function handlePlayerChange(){
 
 function handleResultValidation(){
     let roundWon = false;
-    for(let i = 0; i <= 9; i++){
+    for(let i = 0; i < winningConditions.length; i++){
         const winCondition = winningConditions[i];
         let A = gameState[winCondition[0]];
         let B = gameState[winCondition[1]];
