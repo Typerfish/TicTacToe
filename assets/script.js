@@ -1,6 +1,7 @@
 // Store game status
 
 const gameStatus = document.querySelector('.status');
+ 
 // Variables
 
 let gameActive = true;
@@ -38,12 +39,12 @@ function handleCellPlayed(clickedCell, clickedCellIndex){
 
 function handlePlayerChange(){
     currentPlayer = currentPlayer === "X" ? "O" : "X";
-    statusDisplay.innerHTML = currentPlayerTurn();
+    gameStatus.innerHTML = currentTurn();
 }
 
 function handleResultValidation(){
     let roundWon = false;
-    for(let i = 0; i <= 7; i++){
+    for(let i = 0; i <= 9; i++){
         const winCondition = winningConditions[i];
         let A = gameState[winCondition[0]];
         let B = gameState[winCondition[1]];
@@ -55,7 +56,7 @@ function handleResultValidation(){
             }
         }
         if(roundWon){
-            statusDisplay.innerHTML = winningMessage();
+            gameStatus.innerHTML = winningMessage();
             gameActive = false;
             return;
         }
@@ -66,7 +67,9 @@ function handleResultValidation(){
         gameActive = false;
         return;
     }
+    handlePlayerChange();
 }
+
 function handleCellClicked(clickedCellEvent){
     const clickedCell = clickedCellEvent.target
     const clickedCellIndex = parseInt(
@@ -78,6 +81,7 @@ function handleCellClicked(clickedCellEvent){
     handleCellPlayed(clickedCell, clickedCellIndex);
     handleResultValidation()
 }
+
 function handleRestartGame(){
     gameActive = true;
     currentPlayer = "X";
