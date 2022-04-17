@@ -23,7 +23,7 @@ let currentPlayer = "X";
 
 // Messages
 
-const winningMessage = ()=> `Player ${CurrentPlayer} is victor!`;
+const winningMessage = ()=> `Player ${currentPlayer} is victor!`;
 const tieMessage = ()=> `Uh Oh! The battle of wills continues!`;
 const currentTurn = ()=> `It's ${currentPlayer}'s move..`;
 
@@ -41,28 +41,30 @@ function handlePlayerChange(){
     gameStatus.innerHTML = currentTurn();
 }
 
-function handleResultValidation(){
+function handleResultValidation() {
     let roundWon = false;
-    for(let i = 0; i < winningConditions.length; i++){
+    for (let i = 0; i < winningConditions.length; i++) {
         const winCondition = winningConditions[i];
         let A = gameState[winCondition[0]];
         let B = gameState[winCondition[1]];
         let C = gameState[winCondition[2]];
-        if(A === '' || B === '' || C === ''){
-            if (A === B && B === C){
-                roundWon = true;
-                break
-            }
+        if (A === '' || B === '' || C === '') {
+            continue;
         }
-        if(roundWon){
-            gameStatus.innerHTML = winningMessage();
-            gameActive = false;
-            return;
+        if (A === B && B === C) {
+            roundWon = true;
+            break
         }
     }
+if (roundWon) {
+        gameStatus.innerHTML = winningMessage();
+        gameActive = false;
+        return;
+    }
+
     let roundDraw = !gameState.includes("");
-    if(roundDraw){
-        gameStatus.innerHTML = tieMessage();
+    if (roundDraw) {
+        gameStatus.innerHTML = drawMessage();
         gameActive = false;
         return;
     }

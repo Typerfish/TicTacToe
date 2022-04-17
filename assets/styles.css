@@ -1,24 +1,39 @@
 /* Game Board */
 h1 {
     text-align: center;
+    font-size: 45px;
+    font-family: 'Comfortaa', cursive;
 }
 
 h2 {
     text-align: center;
+    font-family: 'Comfortaa', cursive;
 }
 
 h3 {
     text-align: center;
+    font-family: 'Comfortaa', cursive;
 }
 
 body {
-    background-image: url('/Users/deannaireland/Desktop/Milestone Project 1/TicTacToe/assets/images/background.png');
-    background-size: 120%;
+    background-image: url('/Users/deannaireland/Desktop/Milestone Project 1/TicTacToe/assets/images/background-1.jpeg');
+    background-size: auto;
 }
 
 .restart {
+    background-color: darkslateblue;
+    color: white;
+    border-radius: 12px;
+    font-family: 'Comfortaa', cursive;
+    font-size: 18px;
     display: block;
     margin: 0 auto;
+    width: 250px;
+}
+.restart:hover {
+    transition-duration: 0.5s;
+    background-color: pink;
+    color: white;
 }
 
 .gameboard {
@@ -29,12 +44,13 @@ body {
 }
 
 .cell {
-    font-family: "Permanent Marker", cursive;
+    font-family: 'Comfortaa', cursive;
     font-size: 60px;
+    text-align: center;
     width: 100px;
     height: 100px;
-    box-shadow: 0 0 0 1px black;
-    border: 5px solid pink;
+    box-shadow: 0 0 0 4px pink;
+    border: 5px solid darkslateblue;
     cursor: pointer;
     line-height: 100px;
 }
